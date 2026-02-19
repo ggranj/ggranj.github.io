@@ -9,42 +9,54 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
             color: #333;
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
             padding: 40px 20px;
-            background-color: #f9f9f9;
+            background-color: #f4f5f7;
         }
         .container {
             background-color: #fff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
-        h1 { margin-bottom: 5px; color: #222; }
-        h2 { border-bottom: 2px solid #eaeaea; padding-bottom: 10px; margin-top: 30px; color: #444; }
-        h3 { margin-bottom: 5px; color: #333; }
-        .contact-info { margin-bottom: 30px; color: #666; font-size: 0.95em; }
-        .contact-info a { color: #0366d6; text-decoration: none; }
+        h1 { margin-bottom: 5px; color: #1a1a1a; font-size: 2.5em; }
+        h2 { border-bottom: 2px solid #eaeaea; padding-bottom: 10px; margin-top: 35px; color: #2c3e50; font-size: 1.5em; }
+        h3 { margin-bottom: 5px; color: #1a1a1a; font-size: 1.2em; }
+        .contact-info { margin-bottom: 25px; color: #555; font-size: 0.95em; }
+        .contact-info a { color: #0366d6; text-decoration: none; font-weight: 500; }
         .contact-info a:hover { text-decoration: underline; }
-        .summary { font-size: 1.1em; margin-bottom: 30px; }
-        .skills { display: flex; flex-wrap: wrap; gap: 10px; }
-        .skill-tag { background-color: #e1ecf4; color: #39739d; padding: 5px 12px; border-radius: 15px; font-size: 0.9em; }
-        .job { margin-bottom: 25px; }
-        .job-header { display: flex; justify-content: space-between; align-items: baseline; }
-        .date { color: #666; font-size: 0.9em; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 8px; }
+        .status-badge { display: inline-block; background-color: #e6f4ea; color: #1e8e3e; padding: 4px 10px; border-radius: 12px; font-size: 0.85em; margin-top: 8px; font-weight: 500;}
+        .summary { font-size: 1.05em; margin-bottom: 35px; color: #444; }
+        
+        .skills-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 10px 20px; margin-bottom: 20px; }
+        .skill-category { font-weight: 600; color: #444; }
+        
+        .job { margin-bottom: 35px; }
+        .job-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
+        .date { color: #666; font-size: 0.9em; font-weight: 500; white-space: nowrap; }
+        .company-desc { font-size: 0.9em; color: #666; font-style: italic; margin-bottom: 10px; display: block; }
+        ul { padding-left: 20px; margin-top: 10px; }
+        li { margin-bottom: 10px; color: #333; }
+        
+        @media (max-width: 600px) {
+            .skills-grid { grid-template-columns: 1fr; gap: 5px; }
+            .skill-category { margin-top: 10px; }
+            .job-header { flex-direction: column; }
+            .date { margin-top: 5px; }
+            .container { padding: 30px 20px; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Georgii Sokolov</h1>
         <div class="contact-info">
-            Senior Go Backend Engineer | 
-            <a href="mailto:ggranjmixedberries@gmail.com">ggranjmixedberries@gmail.com</a> | 
-            +66 61 554 6028 | 
-            <a href="https://linkedin.com/in/georgii-sokolov-go/" target="_blank">LinkedIn</a> |
-            <a href="https://github.com/ggranj" target="_blank">GitHub</a>
+            <strong>Senior Go Backend Engineer</strong><br>
+            <a href="mailto:ggranjmixedberries@gmail.com">ggranjmixedberries@gmail.com</a> | +66 61 554 6028 | 
+            <a href="https://linkedin.com/in/georgii-sokolov-go/" target="_blank">LinkedIn</a>
+            <br>
+            <span class="status-badge">Thailand (UTC+7) • Open to relocation (EU/UAE/SEA) • Ready to start immediately</span>
         </div>
 
         <div class="summary">
@@ -52,16 +64,24 @@
         </div>
 
         <h2>Key Competencies</h2>
-        <div class="skills">
-            <span class="skill-tag">Go</span>
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">ML Integration (CatBoost, ONNX)</span>
-            <span class="skill-tag">Distributed Systems (Kafka, Redis)</span>
-            <span class="skill-tag">Data Pipelines & Feature Stores</span>
-            <span class="skill-tag">Cloud Infrastructure (AWS/GCP/Azure)</span>
-            <span class="skill-tag">Observability (Prometheus, Grafana, OpenTelemetry)</span>
-            <span class="skill-tag">MLOps (Docker, Kubernetes)</span>
-            <span class="skill-tag">API Development (gRPC, REST)</span>
+        <div class="skills-grid">
+            <div class="skill-category">Languages</div>
+            <div>Go, Python</div>
+            
+            <div class="skill-category">Databases & Caching</div>
+            <div>PostgreSQL, Elasticsearch, Redis, Valkey</div>
+            
+            <div class="skill-category">Messaging & APIs</div>
+            <div>Kafka, gRPC, REST, Protobuf</div>
+            
+            <div class="skill-category">DevOps & Cloud</div>
+            <div>Docker, Kubernetes, AWS, GCP, GitLab CI/CD</div>
+            
+            <div class="skill-category">Observability</div>
+            <div>Prometheus, Grafana, OpenTelemetry</div>
+            
+            <div class="skill-category">ML Integration</div>
+            <div>CatBoost, ONNX, Feature Stores</div>
         </div>
 
         <h2>Professional Experience</h2>
@@ -71,13 +91,14 @@
                 <h3>Senior Go Backend Engineer</h3>
                 <span class="date">Jun 2023 - Nov 2025</span>
             </div>
-            <strong>EPAM Systems</strong> (Search Ranking, ML Inference & Reliability)
+            <strong>EPAM Systems</strong> | <em>Search Ranking, ML Inference & Reliability</em>
             <ul>
                 <li>Delivered a high-throughput ranking service that moved search reranking out of Elasticsearch into a Go-based microservice with CatBoost inference and personalization.</li>
                 <li>Lead the ES service migration: ES keeps retrieval, Go service handles feature enrichment + ranking, cutting ES load by ~25% and enabling personalization.</li>
-                <li>Integrated CatBoost with a pooled inference design, custom metrics, atomic model swapping for safe hot-reloads, reducing p99 latency by 40%.</li>
+                <li>Integrated CatBoost with a pooled inference design, custom metrics, atomic model swapping (atomic.Pointer + ref counting) for safe hot-reloads, reducing p99 latency by 40%.</li>
                 <li>Built feature ingestion: Kafka producers/consumers, idempotent writes, real-time lookups from a feature store; parallel enrichment, decreasing context canceled requests by ~30%.</li>
-                <li>Implemented graceful degradation: dual strategy for critical vs optional features, fallback to ES ranking on model errors.</li>
+                <li>Implemented graceful degradation: dual strategy for critical vs optional features, fallback to ES ranking on model errors, and Valkey caching with pipelining, improving overall user experience.</li>
+                <li>Integrated Go ranking service with Python ML pipelines. Designed Kafka proto contracts for Python producers, debugged and modified Python code for feature delivery.</li>
             </ul>
         </div>
 
@@ -86,11 +107,14 @@
                 <h3>Senior Go Backend Engineer</h3>
                 <span class="date">Feb 2022 - Jun 2023</span>
             </div>
-            <strong>Glovo</strong> (High-Load Search & Logistics Systems)
+            <strong>Glovo</strong> | <em>High-Load Search & Logistics Systems</em>
+            <span class="company-desc">Leading Multi-Category Delivery Platform, 25+ Countries</span>
             <ul>
                 <li>Built and optimized Go microservices for search enrichment and pre-ranking logic, handling thousands of RPS with predictable latency.</li>
                 <li>Implemented parallel feature fetching and batching, reducing median response time by ~35%.</li>
-                <li>Improved reliability with retry strategies, circuit breakers, fallback logic, and structured observability, decreasing downtime incidents by 50%.</li>
+                <li>Integrated Elasticsearch for retrieval and Redis caching for real-time lookups, significantly lowering backend load.</li>
+                <li>Improved reliability with retry strategies, circuit breakers, fallback logic, and structured observability (Prometheus + Grafana + OpenTelemetry), decreasing downtime incidents by 50%.</li>
+                <li>Collaborated with data and ML teams to introduce feature-based ranking signals, enabling more relevant and dynamic search results.</li>
             </ul>
         </div>
 
@@ -99,10 +123,12 @@
                 <h3>Senior Go Backend Engineer</h3>
                 <span class="date">Mar 2020 - Feb 2022</span>
             </div>
-            <strong>Allegro</strong> (Search, Catalog & High-Availability Systems)
+            <strong>Allegro</strong> | <em>Search, Catalog & High-Availability Systems</em>
+            <span class="company-desc">Top E-commerce Platform in Poland, 20M MAU</span>
             <ul>
                 <li>Developed and optimized Go microservices handling real-time product indexing, availability checks, and pre-ranking signals for search, reducing p95 latency by 25%.</li>
-                <li>Implemented parallel processing pipelines (errgroup, worker pools) for feature enrichment and batch catalog updates.</li>
+                <li>Implemented parallel processing pipelines (errgroup, worker pools) for feature enrichment and batch catalog updates, decreasing context canceled requests by 40%.</li>
+                <li>Integrated Elasticsearch and Redis/Valkey caching layers, reducing p95 latency and API load during peak traffic.</li>
                 <li>Enhanced CI/CD pipelines with canary rollouts and automated smoke testing.</li>
             </ul>
         </div>
@@ -111,8 +137,9 @@
         <div class="job">
             <div class="job-header">
                 <h3>Master's degree, Computer Software Engineering</h3>
+                <span class="date">2020</span>
             </div>
-            <strong>ITMO University</strong>
+            <strong>ITMO University</strong>, St. Petersburg
         </div>
     </div>
 </body>
