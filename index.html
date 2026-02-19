@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Georgii Sokolov - Senior Go Backend Engineer</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        h1 { margin-bottom: 5px; color: #222; }
+        h2 { border-bottom: 2px solid #eaeaea; padding-bottom: 10px; margin-top: 30px; color: #444; }
+        h3 { margin-bottom: 5px; color: #333; }
+        .contact-info { margin-bottom: 30px; color: #666; font-size: 0.95em; }
+        .contact-info a { color: #0366d6; text-decoration: none; }
+        .contact-info a:hover { text-decoration: underline; }
+        .summary { font-size: 1.1em; margin-bottom: 30px; }
+        .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+        .skill-tag { background-color: #e1ecf4; color: #39739d; padding: 5px 12px; border-radius: 15px; font-size: 0.9em; }
+        .job { margin-bottom: 25px; }
+        .job-header { display: flex; justify-content: space-between; align-items: baseline; }
+        .date { color: #666; font-size: 0.9em; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Georgii Sokolov</h1>
+        <div class="contact-info">
+            Senior Go Backend Engineer | 
+            <a href="mailto:ggranjmixedberries@gmail.com">ggranjmixedberries@gmail.com</a> | 
+            +66 61 554 6028 | 
+            <a href="https://linkedin.com/in/georgii-sokolov-go/" target="_blank">LinkedIn</a> |
+            <a href="https://github.com/ggranj" target="_blank">GitHub</a>
+        </div>
+
+        <div class="summary">
+            <p>Senior Go Backend Engineer specializing in search ranking, ML inference, and reliability with 5+ years of experience designing and deploying scalable backend solutions. Expertise in high-throughput microservices, distributed systems, and observability. Passionate about optimizing performance, ensuring resilience, and integrating ML for real-world impact.</p>
+        </div>
+
+        <h2>Key Competencies</h2>
+        <div class="skills">
+            <span class="skill-tag">Go</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">ML Integration (CatBoost, ONNX)</span>
+            <span class="skill-tag">Distributed Systems (Kafka, Redis)</span>
+            <span class="skill-tag">Data Pipelines & Feature Stores</span>
+            <span class="skill-tag">Cloud Infrastructure (AWS/GCP/Azure)</span>
+            <span class="skill-tag">Observability (Prometheus, Grafana, OpenTelemetry)</span>
+            <span class="skill-tag">MLOps (Docker, Kubernetes)</span>
+            <span class="skill-tag">API Development (gRPC, REST)</span>
+        </div>
+
+        <h2>Professional Experience</h2>
+        
+        <div class="job">
+            <div class="job-header">
+                <h3>Senior Go Backend Engineer</h3>
+                <span class="date">Jun 2023 - Nov 2025</span>
+            </div>
+            <strong>EPAM Systems</strong> (Search Ranking, ML Inference & Reliability)
+            <ul>
+                <li>Delivered a high-throughput ranking service that moved search reranking out of Elasticsearch into a Go-based microservice with CatBoost inference and personalization.</li>
+                <li>Lead the ES service migration: ES keeps retrieval, Go service handles feature enrichment + ranking, cutting ES load by ~25% and enabling personalization.</li>
+                <li>Integrated CatBoost with a pooled inference design, custom metrics, atomic model swapping for safe hot-reloads, reducing p99 latency by 40%.</li>
+                <li>Built feature ingestion: Kafka producers/consumers, idempotent writes, real-time lookups from a feature store; parallel enrichment, decreasing context canceled requests by ~30%.</li>
+                <li>Implemented graceful degradation: dual strategy for critical vs optional features, fallback to ES ranking on model errors.</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <h3>Senior Go Backend Engineer</h3>
+                <span class="date">Feb 2022 - Jun 2023</span>
+            </div>
+            <strong>Glovo</strong> (High-Load Search & Logistics Systems)
+            <ul>
+                <li>Built and optimized Go microservices for search enrichment and pre-ranking logic, handling thousands of RPS with predictable latency.</li>
+                <li>Implemented parallel feature fetching and batching, reducing median response time by ~35%.</li>
+                <li>Improved reliability with retry strategies, circuit breakers, fallback logic, and structured observability, decreasing downtime incidents by 50%.</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <h3>Senior Go Backend Engineer</h3>
+                <span class="date">Mar 2020 - Feb 2022</span>
+            </div>
+            <strong>Allegro</strong> (Search, Catalog & High-Availability Systems)
+            <ul>
+                <li>Developed and optimized Go microservices handling real-time product indexing, availability checks, and pre-ranking signals for search, reducing p95 latency by 25%.</li>
+                <li>Implemented parallel processing pipelines (errgroup, worker pools) for feature enrichment and batch catalog updates.</li>
+                <li>Enhanced CI/CD pipelines with canary rollouts and automated smoke testing.</li>
+            </ul>
+        </div>
+
+        <h2>Education</h2>
+        <div class="job">
+            <div class="job-header">
+                <h3>Master's degree, Computer Software Engineering</h3>
+            </div>
+            <strong>ITMO University</strong>
+        </div>
+    </div>
+</body>
+</html>
