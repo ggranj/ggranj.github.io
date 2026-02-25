@@ -20,7 +20,25 @@
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
-        h1 { margin-bottom: 5px; color: #1a1a1a; font-size: 2.5em; }
+
+        /* Блок для выравнивания фото по правому краю */
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px; /* Минимальное скругление */
+            flex-shrink: 0;
+            border: 1px solid #eee;
+        }
+
+        h1 { margin-top: 0; margin-bottom: 5px; color: #1a1a1a; font-size: 2.5em; }
         h2 { border-bottom: 2px solid #eaeaea; padding-bottom: 10px; margin-top: 35px; color: #2c3e50; font-size: 1.5em; }
         h3 { margin-bottom: 5px; color: #1a1a1a; font-size: 1.2em; }
         .contact-info { margin-bottom: 25px; color: #555; font-size: 0.95em; }
@@ -40,6 +58,8 @@
         li { margin-bottom: 10px; color: #333; }
         
         @media (max-width: 600px) {
+            .header-flex { flex-direction: column-reverse; align-items: center; text-align: center; }
+            .profile-photo { width: 120px; height: 120px; margin-bottom: 15px; }
             .skills-grid { grid-template-columns: 1fr; gap: 5px; }
             .skill-category { margin-top: 10px; }
             .job-header { flex-direction: column; }
@@ -50,13 +70,18 @@
 </head>
 <body>
     <div class="container">
-        <h1>Georgii Sokolov</h1>
-        <div class="contact-info">
-            <strong>Senior Go Backend Engineer</strong><br>
-            <a href="mailto:ggranjmixedberries@gmail.com">ggranjmixedberries@gmail.com</a> | +66 61 554 6028 | 
-            <a href="https://linkedin.com/in/georgii-sokolov-go/" target="_blank">LinkedIn</a>
-            <br>
-            <span class="status-badge">Thailand (UTC+7) • Open to relocation (EU/UAE/SEA) • Ready to start immediately</span>
+        <div class="header-flex">
+            <div>
+                <h1>Georgii Sokolov</h1>
+                <div class="contact-info">
+                    <strong>Senior Go Backend Engineer</strong><br>
+                    <a href="mailto:ggranjmixedberries@gmail.com">ggranjmixedberries@gmail.com</a> | +66 61 554 6028 | 
+                    <a href="https://linkedin.com/in/georgii-sokolov-go/" target="_blank">LinkedIn</a>
+                    <br>
+                    <span class="status-badge">Thailand (UTC+7) • Open to relocation (EU/UAE/SEA) • Remote: Ready to start immediately | Relocation/Hybrid: 2-3 weeks notice</span>
+                </div>
+            </div>
+            <img src="cv_photo.jpg" alt="Georgii Sokolov" class="profile-photo">
         </div>
 
         <div class="summary">
@@ -124,7 +149,7 @@
                 <span class="date">Mar 2020 - Feb 2022</span>
             </div>
             <strong>Allegro</strong> | <em>Search, Catalog & High-Availability Systems</em>
-            <span class="company-desc">Top E-commerce Platform in Poland, 20M MAU</span>
+            <span class="company-desc">Top E-commerce Platform in Poland</span>
             <ul>
                 <li>Developed and optimized Go microservices handling real-time product indexing, availability checks, and pre-ranking signals for search, reducing p95 latency by 25%.</li>
                 <li>Implemented parallel processing pipelines (errgroup, worker pools) for feature enrichment and batch catalog updates, decreasing context canceled requests by 40%.</li>
@@ -137,7 +162,7 @@
         <div class="job">
             <div class="job-header">
                 <h3>Master's degree, Computer Software Engineering</h3>
-                <span class="date">2020</span>
+                <span class="date">2018</span>
             </div>
             <strong>ITMO University</strong>, St. Petersburg
         </div>
