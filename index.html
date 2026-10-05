@@ -54,6 +54,8 @@
         .job-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
         .date { color: #666; font-size: 0.9em; font-weight: 500; white-space: nowrap; }
         .company-desc { font-size: 0.9em; color: #666; font-style: italic; margin-bottom: 10px; display: block; }
+        .job-group { font-weight: 600; color: #2c3e50; font-size: 0.95em; margin-top: 18px; letter-spacing: 0.01em; }
+        .job-group + ul { margin-top: 6px; }
         ul { padding-left: 20px; margin-top: 10px; }
         li { margin-bottom: 10px; color: #333; }
         
@@ -74,7 +76,7 @@
             <div>
                 <h1>Georgii Sokolov</h1>
                 <div class="contact-info">
-                    <strong>Senior Go Backend Engineer</strong><br>
+                    <strong>Senior Go Backend Engineer</strong> | Search Ranking, ML Inference &amp; Real-Time Recommendations<br>
                     <a href="mailto:ggranjmixedberries@gmail.com">ggranjmixedberries@gmail.com</a> | +66 61 554 6028 | 
                     <a href="https://linkedin.com/in/georgii-sokolov-go/" target="_blank">LinkedIn</a>
                     <br>
@@ -85,7 +87,7 @@
         </div>
 
         <div class="summary">
-            <p>Senior Go Backend Engineer specializing in search ranking, ML inference, and reliability with 5+ years of experience designing and deploying scalable backend solutions. Expertise in high-throughput microservices, distributed systems, and observability. Passionate about optimizing performance, ensuring resilience, and integrating ML for real-world impact.</p>
+            <p>Senior Go Backend Engineer specializing in search ranking and production ML inference, with 5+ years building high-throughput services. I own the serving side of ML: pooled inference, zero-downtime model reloads, and graceful degradation under load — the layer between a trained model and live traffic. Expertise in high-throughput microservices, distributed systems, and observability.</p>
         </div>
 
         <h2>Key Competencies</h2>
@@ -114,16 +116,30 @@
         <div class="job">
             <div class="job-header">
                 <h3>Senior Go Backend Engineer</h3>
-                <span class="date">Jun 2023 - Nov 2025</span>
+                <span class="date">Jun 2023 - Oct 2026</span>
             </div>
-            <strong>EPAM Systems</strong> | <em>Search Ranking, ML Inference & Reliability</em>
+            <strong>EPAM Systems</strong> | <em>Search Ranking, ML Inference &amp; Real-Time Recommendations</em>
+
+            <div class="job-group">Real-time recommendations (ONNX Runtime, SASRec)</div>
             <ul>
-                <li>Delivered a high-throughput ranking service that moved search reranking out of Elasticsearch into a Go-based microservice with CatBoost inference and personalization.</li>
-                <li>Lead the ES service migration: ES keeps retrieval, Go service handles feature enrichment + ranking, cutting ES load by ~25% and enabling personalization.</li>
-                <li>Integrated CatBoost with a pooled inference design, custom metrics, atomic model swapping (atomic.Pointer + ref counting) for safe hot-reloads, reducing p99 latency by 40%.</li>
-                <li>Built feature ingestion: Kafka producers/consumers, idempotent writes, real-time lookups from a feature store; parallel enrichment, decreasing context canceled requests by ~30%.</li>
-                <li>Implemented graceful degradation: dual strategy for critical vs optional features, fallback to ES ranking on model errors, and Valkey caching with pipelining, improving overall user experience.</li>
-                <li>Integrated Go ranking service with Python ML pipelines. Designed Kafka proto contracts for Python producers, debugged and modified Python code for feature delivery.</li>
+                <li>Built the Go inference service for real-time sequential recommendations on ONNX Runtime, taking a SASRec model to production: pooled ORT sessions, zero-downtime model reload driven by remote config, and bounded-timeout degradation.</li>
+                <li>Resolved model tensor contracts (input/output names, roles) from remote configuration at load time instead of hardcoding them, so a retrained model with renamed tensors ships without a service release.</li>
+                <li>Diagnosed and fixed CPU thrashing in ONNX inference: ORT sizes its thread pool from node cores, ignoring the container limit. Pinned each session to a single thread and moved concurrency to the session pool.</li>
+                <li>Contributed to the customer-events service that supplies user interaction history to the inference path.</li>
+            </ul>
+
+            <div class="job-group">Search ranking platform (CatBoost)</div>
+            <ul>
+                <li>Led the Elasticsearch &rarr; Go migration for search reranking: ES keeps retrieval, the Go service owns feature enrichment and ranking. Cut ES load by ~25% and unlocked personalization.</li>
+                <li>Designed a pooled CatBoost inference library used by two production ranking services: atomic pool swap for hot reloads, ref-counted handles so no model is freed mid-prediction, and a validation gate blocking bad models. In production 3+ quarters.</li>
+                <li>Ranking rollout drove ~$2.4M annualized incremental GMV on the delivery tab.</li>
+                <li>Designed and built a pairwise feature store for per-query conversion signals, replacing query-averaged conversion in the ranking model; boost integrated into the ranking service behind a feature toggle.</li>
+            </ul>
+
+            <div class="job-group">Reliability &amp; data plane</div>
+            <ul>
+                <li>Separate paths for critical vs optional features, fallback to ES ranking, Valkey caching with pipelining.</li>
+                <li>Integrated the Go ranking service with Python ML pipelines; designed the Kafka proto contracts for DAGs.</li>
             </ul>
         </div>
 
@@ -137,9 +153,9 @@
             <ul>
                 <li>Built and optimized Go microservices for search enrichment and pre-ranking logic, handling thousands of RPS with predictable latency.</li>
                 <li>Implemented parallel feature fetching and batching, reducing median response time by ~35%.</li>
-                <li>Integrated Elasticsearch for retrieval and Redis caching for real-time lookups, significantly lowering backend load.</li>
+                <li>Integrated Elasticsearch for retrieval and Redis caching for real-time lookups: cached result sets for repeated query + filter combinations, significantly lowering Elasticsearch load.</li>
                 <li>Improved reliability with retry strategies, circuit breakers, fallback logic, and structured observability (Prometheus + Grafana + OpenTelemetry), decreasing downtime incidents by 50%.</li>
-                <li>Collaborated with data and ML teams to introduce feature-based ranking signals, enabling more relevant and dynamic search results.</li>
+                <li>Collaborated with data and ML teams to introduce feature-based ranking signals.</li>
             </ul>
         </div>
 
@@ -152,8 +168,9 @@
             <span class="company-desc">Top E-commerce Platform in Poland</span>
             <ul>
                 <li>Developed and optimized Go microservices handling real-time product indexing, availability checks, and pre-ranking signals for search, reducing p95 latency by 25%.</li>
-                <li>Implemented parallel processing pipelines (errgroup, worker pools) for feature enrichment and batch catalog updates, decreasing context canceled requests by 40%.</li>
-                <li>Integrated Elasticsearch and Redis/Valkey caching layers, reducing p95 latency and API load during peak traffic.</li>
+                <li>Implemented parallel processing pipelines (errgroup, worker pools) for batch catalog updates, decreasing context canceled errors by 40%.</li>
+                <li>Built Go BFF services for content-management admin tools. Designed the Swagger contract up front and mocked handlers at the transport layer, so frontend work could proceed against a stable spec instead of waiting on the backend.</li>
+                <li>Integrated Elasticsearch and Redis caching layers, reducing p95 latency and API load during peak traffic.</li>
                 <li>Enhanced CI/CD pipelines with canary rollouts and automated smoke testing.</li>
             </ul>
         </div>
